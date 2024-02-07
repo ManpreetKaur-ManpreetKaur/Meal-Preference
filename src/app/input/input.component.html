@@ -1,0 +1,17 @@
+<h2>Input</h2>
+
+<p>
+  <label>Your Name: <input #userName></label>
+</p>
+
+<p>
+  <label><input type="radio" name="choice"
+                (click)="setMealChoice(MealChoice.CHICKEN)"> Chicken</label><br>
+  <label><input type="radio" name="choice"
+                (click)="setMealChoice(MealChoice.FISH)" checked> Fish</label><br>
+  <label><input type="radio" name="choice"
+                (click)="setMealChoice(MealChoice.VEGETARIAN)"> Vegetarian</label>
+</p>
+<p>
+  <button routerLink="/output" (click)="onSubmit(userName.value)">Submit</button>
+</p>
