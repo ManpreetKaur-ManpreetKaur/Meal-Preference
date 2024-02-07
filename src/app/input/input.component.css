@@ -19,3 +19,7 @@ span.error{
   color: crimson;
   font-style: oblique;
 }
+
+input[type=text].invalid{
+  border: solid crimson;
+}
