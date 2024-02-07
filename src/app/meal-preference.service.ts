@@ -8,9 +8,8 @@ export class MealPreferenceService {
 
   userPreference: UserPreference = new UserPreference();
 
-  constructor() { }
-
-  reset(): void {
-    this.userPreference = new UserPreference();
+  submitUserPreference(userPreference: UserPreference): void {
+    this.userPreference = userPreference;
+    console.log("submitted user preference: ", userPreference);
   }
 }

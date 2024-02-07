@@ -1,17 +1,31 @@
 <h2>Input</h2>
 
+<form (ngSubmit)="onSubmit()" #myForm="ngForm">
+  <p>
+    <label>Your Name: <input name="userName" #name="ngModel"
+      [(ngModel)]="userPreference.userName" required pattern="(.|\s)*\S(.|\s)*"></label>
+    <span [hidden]="name.valid || name.untouched" class="error"> &larr; required</span>
+  </p>
+  <p>
+    <label><input type="radio" name="choice"
+                  [value]="MealChoice.CHICKEN"
+                  [(ngModel)]="userPreference.mealChoice"> Chicken</label><br>
+    <label><input type="radio" name="choice"
+                  [value]="MealChoice.FISH"
+                  [(ngModel)]="userPreference.mealChoice"> Fish</label><br>
+    <label><input type="radio" name="choice"
+                  [value]="MealChoice.VEGETARIAN"
+                  [(ngModel)]="userPreference.mealChoice"> Vegetarian</label>
+  </p>
+  <p>
+    <button type="submit" [disabled]="myForm.form.invalid">Submit</button>
+  </p>
+</form>
+
+<h3>You Entered</h3>
 <p>
-  <label>Your Name: <input #userName></label>
+  User Name: {{userPreference.userName}}<br>
+  User Meal Choice: {{userPreference.mealChoice}}<br>
+  The Input is Valid: {{myForm.form.valid}}
 </p>
 
-<p>
-  <label><input type="radio" name="choice"
-                (click)="setMealChoice(MealChoice.CHICKEN)"> Chicken</label><br>
-  <label><input type="radio" name="choice"
-                (click)="setMealChoice(MealChoice.FISH)" checked> Fish</label><br>
-  <label><input type="radio" name="choice"
-                (click)="setMealChoice(MealChoice.VEGETARIAN)"> Vegetarian</label>
-</p>
-<p>
-  <button routerLink="/output" (click)="onSubmit(userName.value)">Submit</button>
-</p>

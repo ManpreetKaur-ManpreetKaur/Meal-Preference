@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MealPreferenceService} from "../meal-preference.service";
 import {UserPreference} from "../user-preference";
 import {MealChoice} from "../meal-choice";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-input',
@@ -10,20 +11,16 @@ import {MealChoice} from "../meal-choice";
 })
 export class InputComponent {
 
-  userPreference: UserPreference;
+  userPreference: UserPreference = new UserPreference();
 
-  constructor(service: MealPreferenceService) {
-    service.reset();
-    this.userPreference = service.userPreference;
+  constructor(private service: MealPreferenceService, private router: Router) {
   }
 
   protected readonly MealChoice = MealChoice;
 
-  setMealChoice(choice: MealChoice): void {
-    this.userPreference.mealChoice = choice;
-  }
-
-  onSubmit(userName: string): void {
-    this.userPreference.userName = userName;
+  onSubmit(): void {
+    this.userPreference.userName = this.userPreference.userName.trim();
+    this.service.submitUserPreference(this.userPreference);
+    this.router.navigate(["/output"]);
   }
 }
