@@ -12,7 +12,7 @@ export class InputComponent {
 
   userPreference: UserPreference;
 
-  constructor(private service: MealPreferenceService) {
+  constructor(service: MealPreferenceService) {
     service.reset();
     this.userPreference = service.userPreference;
   }

@@ -10,7 +10,7 @@ import {UserPreference} from "../user-preference";
 export class OutputComponent {
 
   userPreference: UserPreference;
-  constructor(private service: MealPreferenceService) {
+  constructor(service: MealPreferenceService) {
     this.userPreference = service.userPreference;
   }
 }
